@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 export class NewsItem extends Component {
   render() {
-    let { Title, Description, imgUrl, newsUrl, author, date } = this.props;
+    let { Title, Description, imgUrl, newsUrl, author, date, source } = this.props;
 
     const eventDate = new Date(date);
 
@@ -22,10 +22,9 @@ export class NewsItem extends Component {
     return (
       <div className="my-3">
         <div className="card">
-          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            99+
-            <span class="visually-hidden">unread messages</span>
-          </span>
+          <div style={{display: 'flex', justifyContent: 'flex-end', position: 'absolute', right: '0'}}>
+          <span className="badge rounded-pill bg-danger" style={{left: "90%", zIndex:"1"}}> {source} </span>
+          </div>
           <img
             src={
               !imgUrl
@@ -39,7 +38,7 @@ export class NewsItem extends Component {
             <h5 className="card-title">{Title}...</h5>
             <p className="card-text">{Description}...</p>
             <p className="card-text">
-              <small class="text-body-secondary">
+              <small className="text-body-secondary">
                 By {author} on {istDateString} IST
               </small>
             </p>
